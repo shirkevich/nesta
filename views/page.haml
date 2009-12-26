@@ -1,6 +1,9 @@
 .breadcrumb
   %a{ :href => "/" }= @site_title
   &gt;
+  - if @page.parent && @page.parent.parent
+    %a{ :href => @page.parent.parent.abspath }= @page.parent.parent.heading
+    &gt;
   - if @page.parent
     %a{ :href => @page.parent.abspath }= @page.parent.heading
     &gt;
