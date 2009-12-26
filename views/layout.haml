@@ -1,5 +1,5 @@
 !!!
-%html{ :lang => "en", "xml:lang" => "en", :xmlns => 'http://www.w3.org/1999/xhtml' }
+%html{ :lang => "ru", "xml:lang" => "ru", :xmlns => 'http://www.w3.org/1999/xhtml' }
   %head
     %meta{ "http-equiv" => "content-type", "content" => "text/html; charset=utf-8" }
     - if @description
@@ -8,12 +8,29 @@
       %meta{ "name" => "keywords", "content" => @keywords }
     %title= @title
     %link{ :href => "/css/master.css", :media => "screen", :rel => "stylesheet", :type => "text/css" }
+    %link{ :href => "/css/superfish.css", :media => "screen", :rel => "stylesheet", :type => "text/css" }
+    :plain
+      <link rel="stylesheet" type="text/css" href="/css/superfish.css" media="screen">
+      <script type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
+      <script type="text/javascript" src="/js/hoverIntent.js"></script>
+      <script type="text/javascript" src="/js/superfish.js"></script>
+      <script type="text/javascript">
+
+      // initialise plugins
+      jQuery(function(){
+              jQuery('ul.menu').superfish();
+      });
+      </script>
+
+    
     %link{ :href => "/articles.xml", :rel => "alternate", :type => "application/atom+xml" }
+
   %body{ :class => @body_class }
     #container
       #wrapper
         = yield
-
+        
+        = haml :menu, :layout => false
         #footer
           %p
             Powered by

@@ -1,0 +1,8 @@
+%ul{ :class => 'sf-menu sf-navbar' }
+  - %w(rezh editor hall artist klad rubka).each do |section|
+    %li 
+      %a{ :href => '/' + section }= @pages.select{|p| url_for(p) =~ /#{section}$/}[0].heading
+      %ul
+        - @pages.select{|p| url_for(p) =~ /#{section}\/\w+/}.sort{|a, b| a.heading <=> b.heading }.each do |page|
+          %li 
+            %a{ :href => url_for(page) }= page.heading

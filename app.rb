@@ -120,6 +120,7 @@ get "/css/:sheet.css" do
 end
 
 get "/" do
+  @pages = Page.find_all
   set_common_variables
   set_from_config(:title, :subtitle, :description, :keywords)
   @heading = @title
@@ -153,6 +154,7 @@ end
 
 get "*" do
   set_common_variables
+  @pages = Page.find_all
   @page = Page.find_by_path(File.join(params[:splat]))
   raise Sinatra::NotFound if @page.nil?
   set_title(@page)
