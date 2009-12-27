@@ -14,11 +14,16 @@
       <script type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
       <script type="text/javascript" src="/js/hoverIntent.js"></script>
       <script type="text/javascript" src="/js/superfish.js"></script>
+      <script type="text/javascript" src="/js/supersubs.js"></script> 
       <script type="text/javascript">
-
       // initialise plugins
-      jQuery(function(){
-              jQuery('ul.menu').superfish();
+   
+      $(document).ready(function(){ 
+            $('ul.sf-menu').supersubs({
+                minWidth:    12,   // minimum width of sub-menus in em units 
+                maxWidth:    50,   // maximum width of sub-menus in em units 
+                extraWidth:  1     // extra width can ensure lines dont sometimes turn over 
+              }).superfish();
       });
       </script>
 

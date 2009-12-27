@@ -3,10 +3,10 @@
     %li 
       %a{ :href => '/' + section }= @pages.select{|p| url_for(p) =~ /#{section}$/}[0].heading
       %ul
-        - @pages.select{|p| url_for(p) =~ /#{section}\/\w+$/}.sort{|a, b| a.heading <=> b.heading }.each do |page|
+        - @pages.select{|p| url_for(p) =~ /#{section}\/[\w-]+$/}.sort{|a, b| a.heading <=> b.heading }.each do |page|
           %li 
             %a{ :href => url_for(page) }= page.heading
-            - third_level_pages = @pages.select {|p| url_for(p) =~ /#{section}\/#{page.permalink}\/\w+$/} || []
+            - third_level_pages = @pages.select {|p| url_for(p) =~ /#{section}\/#{page.permalink}\/[\w-]+$/} || []
             - unless third_level_pages.empty?
               %ul
                 - third_level_pages.each do |third_level|

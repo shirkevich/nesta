@@ -22,8 +22,10 @@ helpers do
   end
   
   def set_title(page)
-    if page.respond_to?(:parent) && page.parent
-      @title = "#{page.heading} - #{page.parent.heading}"
+    if page.respond_to?(:parent) && page.parent && page.parent.respond_to?(:parent) && page.parent.parent
+      @title = "#{page.heading} - #{page.parent.heading} - #{page.parent.parent.heading} - #{Nesta::Configuration.title}"
+    elsif page.respond_to?(:parent) && page.parent
+      @title = "#{page.heading} - #{page.parent.heading} - #{Nesta::Configuration.title}"
     else
       @title = "#{page.heading} - #{Nesta::Configuration.title}"
     end
