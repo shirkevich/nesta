@@ -1,17 +1,7 @@
-.breadcrumb
-  %a{ :href => "/" }= @site_title
-  &gt;
-  - if @page.parent && @page.parent.parent
-    %a{ :href => @page.parent.parent.abspath }= @page.parent.parent.heading
-    &gt;
-  - if @page.parent
-    %a{ :href => @page.parent.abspath }= @page.parent.heading
-    &gt;
-  = @page.heading
+= haml :breadcrumb, :layout => false
 
 #sidebar
   = haml :categories, :layout => false
-  = haml :feed, :layout => false
 
 #content
   - if @page.date
@@ -33,6 +23,4 @@
       - @page.categories.each do |category|
         %a{ :href => category.abspath }= category.heading
 
-  = haml :social, :layout => false
-  = haml :feed, :locals => { :title => @site_title }, :layout => false
   = haml :comments, :layout => false

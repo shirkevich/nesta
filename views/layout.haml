@@ -7,8 +7,6 @@
     - if @keywords
       %meta{ "name" => "keywords", "content" => @keywords }
     %title= @title
-    %link{ :href => "/css/master.css", :media => "screen", :rel => "stylesheet", :type => "text/css" }
-    %link{ :href => "/css/superfish.css", :media => "screen", :rel => "stylesheet", :type => "text/css" }
     :plain
       <link rel="stylesheet" type="text/css" href="/css/superfish.css" media="screen">
       <script type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
@@ -26,8 +24,7 @@
               }).superfish();
       });
       </script>
-
-    
+    %link{ :href => "/css/master.css", :media => "screen", :rel => "stylesheet", :type => "text/css" }
     %link{ :href => "/articles.xml", :rel => "alternate", :type => "application/atom+xml" }
 
   %body{ :class => @body_class }
@@ -35,7 +32,7 @@
       #wrapper
         = yield
         
-        = haml :menu, :layout => false
+          
         #footer
           %p
             Powered by
@@ -43,5 +40,8 @@
               %a{ :href => "http://effectif.com/nesta" } nesta
             designed by
             %a{ :href => "http://effectif.com" } Graham Ashton
+
+    .menu
+      = haml :menu, :layout => false
 
     = haml :analytics, :layout => false

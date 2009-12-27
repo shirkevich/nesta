@@ -1,5 +1,8 @@
 !base_color = #555
 !pale_color = #777
+!body_back_dark = #660000
+!body_back_light = #993300
+!text_background = #FFFFCC
 !pre_background = #DFF6FB
 !code_color = !pre_background - 140
 !pre_border = !pre_background - 24
@@ -12,6 +15,9 @@
 *
   margin: 0
   padding: 0
+  
+body
+  background =   !body_back_dark
 
 #container
   margin: 3em 1em 2em 1em
@@ -22,11 +28,13 @@
   position: relative
   left: 50%
   margin-left: -26em
+  background = !text_background
 
 #content
   margin-right: 13em
   border-right: 1px solid #ccc
-  padding-right: 1em
+  padding: 1em
+  
 
 body.home #sidebar
   margin-top: 0.8em
@@ -103,6 +111,10 @@ body.home
 
     text-align: center
     font-size: 300%
+    display: none
+
+  #wrapper
+    background = !body_back_light
 
 h2.articles
   margin-bottom: -0.2em
@@ -112,8 +124,7 @@ h2.articles
   font-size: 120%
 
 div.breadcrumb
-  margin-bottom: 2em
-  
+  margin: 2em
   font-size: 80%
   font-family = !sans_serif
   
@@ -260,6 +271,43 @@ a
 
     color = !pale_color
     
-.sf-menu
-  position: fixed
+.menu
+  position: absolute
   top: 0px
+  left: 50%
+  margin-left: -26em
+
+.sf-navbar
+  font-size: 0.9em  
+  background = !body_back_dark
+  a, a:focus, a:hover, a:visited
+    color = !text_background
+
+  li
+    background = !body_back_light
+    li
+      background = !body_back_light
+
+  li.current
+    background = !body_back_dark
+
+  li:hover,
+  li.sfHover,
+  li li.current,
+  a:focus, a:hover, a:active
+    background = !body_back_dark
+
+  ul
+    li:hover,
+    li.sfHover,
+    li:hover li,
+    li.sfHover li,
+    a:focus, a:hover, a:active
+      background = !body_back_dark
+
+ul.sf-navbar li li li:hover,
+ul.sf-navbar li li li.sfHover,
+.sf-navbar li li.current li.current,
+.sf-navbar ul li li a:focus, .sf-navbar ul li li a:hover, .sf-navbar ul li li a:active
+  background = !body_back_light
+
