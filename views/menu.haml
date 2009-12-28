@@ -9,6 +9,6 @@
             - third_level_pages = @pages.select {|p| url_for(p) =~ /#{section}\/#{page.permalink}\/[\w-]+$/} || []
             - unless third_level_pages.empty?
               %ul
-                - third_level_pages.each do |third_level|
+                - third_level_pages.sort{|a, b| a.heading <=> b.heading }.each do |third_level|
                   %li
                     %a{ :href => url_for(third_level) }= third_level.heading
