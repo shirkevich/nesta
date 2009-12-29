@@ -157,6 +157,11 @@ class Page < FileModel
     metadata("summary") && metadata("summary").gsub('\n', "\n")
   end
   
+  def sidebar
+    filename = "#{self.class.model_path(path)}.sidebar"
+    File.exist?(filename) ? File.open(filename).read : nil 
+  end
+  
   def body
     Maruku.new(markup.sub(/^#\s.*$\r?\n(\r?\n)?/, "")).to_html
   end

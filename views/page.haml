@@ -2,6 +2,7 @@
 
 #sidebar
   = haml :categories, :layout => false
+  = @page.sidebar
 
 #content
   - if @page.date
