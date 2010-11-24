@@ -40,6 +40,6 @@ development:
   content: content
 
 production:
-  cache: true
-  content: /var/apps/nesta/shared/content
+  cache: false
+  content: content
   # google_analytics_code: "UA-???????-?"
